@@ -1,0 +1,22 @@
+[worldserver]
+
+########################################
+# ooc mana regen
+########################################
+#
+#    OOCManaRegen.Enable
+#        Description: Enable the module 
+#        Default:     0 - Disabled
+#                     1 - Enabled
+#
+
+OOCManaRegen.Enable = 1
+
+OOCManaRegen.Announce = 1
+
+# Percentage of mana to regen
+OOCManaRegen.ManaRegenMult = 10
+
+# Milliseconds before each mana regen tick
+OOCManaRegen.Timer = 5000
+
