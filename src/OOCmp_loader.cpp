@@ -1,7 +1,7 @@
-void AddoocScripts();
+void Addooc_mana_regenScripts();
 
 void Addmod_ooc_mana_regenScripts()
 {
-    AddoocScripts();
+    Addooc_mana_regenScripts();
 }
 
