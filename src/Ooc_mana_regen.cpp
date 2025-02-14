@@ -8,13 +8,13 @@ class ooc_mana_regen_announce : public PlayerScript
 private:
     std::unordered_map<ObjectGuid, uint32> player_timers;
     void UpdateMana(Player* player) {
-        int maxMana = player->GetMaxPower(POWER_MANA);
+        int max_mana = player->GetMaxPower(POWER_MANA);
         int current_mana = player->GetPower(POWER_MANA);
 
-        int mana_to_add = maxMana / sConfigMgr->GetOption<float>("OOCManaRegen.ManaRegenMult", 10);
-        int newMana = current_mana + mana_to_add;
+        int mana_to_add = max_mana / sConfigMgr->GetOption<float>("OOCManaRegen.ManaRegenMult", 10);
+        int new_mana = current_mana + mana_to_add;
 
-        player->SetPower(POWER_MANA, std::min(newMana, maxMana));
+        player->SetPower(POWER_MANA, std::min(new_mana, max_mana));
     }
 public:
     ooc_mana_regen_announce() : PlayerScript("ooc_mana_regen") { }
