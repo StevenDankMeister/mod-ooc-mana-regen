@@ -6,8 +6,8 @@
 class ooc_mana_regen_announce : public PlayerScript
 {
 private:
-    uint32 time_elapsed = 0;
-    void UpdataMana(Player* player) {
+    std::unordered_map<ObjectGuid, uint32> player_timers;
+    void UpdateMana(Player* player) {
         int maxMana = player->GetMaxPower(POWER_MANA);
         int current_mana = player->GetPower(POWER_MANA);
 
@@ -29,15 +29,15 @@ public:
 
     void OnUpdate(Player* player, uint32 diff) {
         if (player->IsInCombat()) {
-            time_elapsed = 0;
+            player_timers[player->GetGUID()] = 0;
             return;
         }
 
-        time_elapsed += diff;
-        if (time_elapsed < sConfigMgr->GetOption<int>("OOCManaRegen.Timer", 5000)) return;
+        player_timers[player->GetGUID()] += diff;
+        if (player_timers[player->GetGUID()] < sConfigMgr->GetOption<int>("OOCManaRegen.Timer", 5000)) return;
 
-        UpdataMana(player);
-        time_elapsed = 0;
+        UpdateMana(player);
+        player_timers[player->GetGUID()] = 0;
     }
 };
 
