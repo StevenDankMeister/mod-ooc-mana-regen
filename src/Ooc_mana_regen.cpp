@@ -21,7 +21,7 @@ private:
 public:
     ooc_mana_regen_announce() : PlayerScript("ooc_mana_regen") {}
 
-    void OnLogin(Player *player) override
+    void OnPlayerLogin(Player *player) override
     {
         if (sConfigMgr->GetOption<bool>("OOCManaRegen.Announce", true))
         {
@@ -29,7 +29,7 @@ public:
         }
     }
 
-    void OnUpdate(Player *player, uint32 diff)
+    void OnPlayerUpdate(Player *player, uint32 diff)
     {
         if (player->IsInCombat())
         {
